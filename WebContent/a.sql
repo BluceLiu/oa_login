@@ -1,0 +1,2 @@
+CREATE SCHEMA `yangsheng` ;
+ALTER SCHEMA `yangsheng`  DEFAULT CHARACTER SET gbk ;
