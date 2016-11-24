@@ -4,11 +4,15 @@ import java.io.Serializable;
 public class Gongzi implements Serializable{
 private int gongziId;
 private int userId;
-private int chuqinQue;//缂哄嫟澶╂暟
-private int jiaban;//鍔犵彮
-private int gongziJiBie;//宸ヨ祫绾у埆
-private int gongziYing;//搴斿彂宸ヨ祫
-private String   zhuangtai;//鐘舵??(鏈鎵癸紝閫氳繃锛屼笉閫氳繃)
+private int chuqinQue;//缺勤
+private int jiaban;//加班时长
+private int gongziJiBie;//工资级别
+private int gongziYing;//应发工资
+private String   zhuangtai;//审批状态
+
+public Gongzi() {
+	super();
+}
 public int getGongziId() {
 	return gongziId;
 }

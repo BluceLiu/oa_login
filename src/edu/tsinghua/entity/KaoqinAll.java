@@ -3,13 +3,13 @@ import java.io.Serializable;
 
 public class KaoqinAll implements Serializable{
 private  int   kaoqinAllId;
-private int yue;//鏈堜唤
-private int bumenId;//閮ㄩ棬id
+private int yue;//月份
+private int bumenId;//部门id
 private int userId;
-private int chuqinYing;//搴斿嚭鍕ゅぉ鏁?
-private int chuqinShi;//瀹為檯鍑哄嫟澶╂暟
-private int chuqinQue;//缂哄嫟澶╂暟
-private int jiaban;//鍔犵彮
+private int chuqinYing;//应出勤
+private int chuqinShi;//实际出勤
+private int chuqinQue;//缺勤
+private int jiaban;//加班
 public int getKaoqinAllId() {
 	return kaoqinAllId;
 }

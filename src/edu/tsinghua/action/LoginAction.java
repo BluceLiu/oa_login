@@ -1,19 +1,23 @@
 package edu.tsinghua.action;
 
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 import edu.tsinghua.biz.UserBiz;
 import edu.tsinghua.entity.LoginInfo;
 
-public class LoginAction extends ActionSupport implements ModelDriven<LoginInfo>{
+public class LoginAction extends ActionSupport implements SessionAware,ModelDriven<LoginInfo>{
 
 	/**
 	 *  Ù–‘
 	 * */
 	LoginInfo loginInfo=new LoginInfo();
 	UserBiz userBiz;
-
+	Map<String, Object> session;
 
 
 	public LoginInfo getUser() {
@@ -47,6 +51,7 @@ public class LoginAction extends ActionSupport implements ModelDriven<LoginInfo>
 		if(u==null){
 			return LOGIN;
 		}
+		session.put("loginInfo", loginInfo);
 		return SUCCESS;
 	}
 
@@ -56,6 +61,14 @@ public class LoginAction extends ActionSupport implements ModelDriven<LoginInfo>
 	public LoginInfo getModel() {
 		// TODO Auto-generated method stub
 		return loginInfo;
+	}
+
+
+
+	@Override
+	public void setSession(Map<String, Object> arg0) {
+		// TODO Auto-generated method stub
+		this.session=arg0;
 	}
 	
 	
