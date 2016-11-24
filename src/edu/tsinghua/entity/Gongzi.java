@@ -13,6 +13,12 @@ private String   zhuangtai;//ÉóÅú×´Ì¬
 public Gongzi() {
 	super();
 }
+
+public Gongzi(int gongziId) {
+	super();
+	this.gongziId = gongziId;
+}
+
 public int getGongziId() {
 	return gongziId;
 }

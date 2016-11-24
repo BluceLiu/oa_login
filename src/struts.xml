@@ -13,15 +13,20 @@
 		</action>
 		
 		<action name="insertOne" class="huibaoKuaiAct" method="insertOne">
-			<result name="success" type="redirect">kuaiji.jsp#5f</result><!-- getallAction -->
+			<result name="success" type="redirect">kuaiji.jsp</result><!-- getallAction -->
 			
 		</action>
 		<action name="getAll" class="huibaoKuaiAct" method="getAll">
 			<result name="success" type="redirect">kuaiji.jsp#right2</result><!-- getallAction -->
-			
 		</action>
 	
-		
+		<action name="gongziInit" class="gongziAct" method="init">
+			<result name="success" type="redirect">kuaiji.jsp#gongzibiaotijiao</result><!-- getallAction -->
+		</action>
+		<action name="insertOneTijiaoGongzi" class="gongziAct" method="insertOne">
+			<result name="success" type="redirect">kuaiji.jsp#gongzibiaotijiao</result><!-- getallAction -->
+		</action>
+	
 		
 	</package>
 </struts>

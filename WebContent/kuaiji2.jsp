@@ -137,13 +137,13 @@
 							</tr>
 						<c:forEach items="${sessionScope.gongzibiaos }" var="gongzi" varStatus="vs" >
 							<tr>
-								<td ><b id="gongziId">${gongzi.gongziId }</b></td>
-								<td ><input type="text" id="userId" value=${gongzi.userId } /> </td>
-								<td ><input type="text" id="chuqinQue" value=${gongzi.chuqinQue } /> </td>
-								<td ><input type="text" id="jiaban" value=${gongzi.jiaban }/></td>
-								<td ><input type="text" id="gongziJiBie" value=${gongzi.gongziJiBie }/></td>
-								<td ><input type="text" id="gongziYing" value=${gongzi.gongziYing }/></td>
-								<td ><input type="text" id="zhuangtai" value=${gongzi.zhuangtai }/></td>
+								<td ><b id="gongzis.get(vs.index).gongziId">${gongzi.gongziId }</b></td>
+								<td ><input type="text" id="gongzis.get(vs.index)..userId" value=${gongzi.userId } /> </td>
+								<td ><input type="text" id="gongzis.get(vs.index)..chuqinQue" value=${gongzi.chuqinQue } /> </td>
+								<td ><input type="text" id="gongzis.get(vs.index)..jiaban" value=${gongzi.jiaban }/></td>
+								<td ><input type="text" id="gongzis.get(vs.index)..gongziJiBie" value=${gongzi.gongziJiBie }/></td>
+								<td ><input type="text" id="gongzis.get(vs.index)..gongziYing" value=${gongzi.gongziYing }/></td>
+								<td ><input type="text" id="gongzis.get(vs.index)..zhuangtai" value=${gongzi.zhuangtai }/></td>
 								
 							</tr>
 							</c:forEach>

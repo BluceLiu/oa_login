@@ -38,6 +38,7 @@
 			<list>
 				<value>edu/tsinghua/entity/mapping/user.xml</value>
 				<value>edu/tsinghua/entity/mapping/HuibaoKuai.xml</value>
+				<value>edu/tsinghua/entity/mapping/Gongzi.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -48,6 +49,10 @@
 	<bean name="huibaoKuaiDao" class="edu.tsinghua.dao.HuibaoKuaiDao"/>
 	<bean name="huibaoKuaiBiz" class="edu.tsinghua.biz.HuibaoKuaiBiz"/>
 	<bean name="huibaoKuaiAct" class="edu.tsinghua.action.HuibaoKuaiAction"/>
+	
+	<bean name="gongziDao" class="edu.tsinghua.dao.GongziDao"/>
+	<bean name="gongziBiz" class="edu.tsinghua.biz.GongziBiz"/>
+	<bean name="gongziAct" class="edu.tsinghua.action.GongziAction"/>
 	
 	
 	

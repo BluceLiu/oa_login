@@ -1,5 +1,7 @@
 package edu.tsinghua.biz;
 
+import java.util.List;
+
 import edu.tsinghua.dao.GongziDao;
 import edu.tsinghua.entity.Gongzi;
 
@@ -20,6 +22,13 @@ public class GongziBiz {
 	
 	public void init(Gongzi gongzi){
 		gongziDao.init(gongzi);
+	}
+	
+	/**
+	 * 提交工资表 insert
+	 */
+	public void insertOne(List<Gongzi> gongzis){
+		gongziDao.insertOne(gongzis);
 	}
 	
 }
