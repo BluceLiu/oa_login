@@ -1,3 +1,7 @@
+<%@page import="edu.tsinghua.entity.Kaoqin"%>
+<%@page import="java.util.List"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=gbk"
     pageEncoding="gbk"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -14,6 +18,10 @@
 	height:100%;
 	width:100%;
 	}
+#daka,#dakachenggong,#showdaka{
+	height:100%;
+	width:100%;
+	}
 #right1{
 	height:100%;
 	width:100%;
@@ -21,6 +29,11 @@
 #right2{
 	width:100%;
 	height:100%;
+	}
+#gongzibiaotijiao{
+	width:100%;
+	height:93%;
+	overflow:scroll;
 	}
 </style>
 </head>
@@ -45,10 +58,8 @@
       <li>
           <h4 class="M1"><span></span>打卡</h4>
           <div class="list-item none">
-            <a href=''>系统公告1</a>
-            <a href=''>系统公告2</a>
-            <a href=''>系统公告3</a>
-            <a href=''>系统公告4</a>
+            <a href="#daka">打卡</a>
+            <a href="showdakaAction">查看考勤</a>
           </div>
         </li>
         <li>
@@ -80,9 +91,17 @@
 	<li>
           <h4 class="M4"><span></span>员工工资处理</h4>
           <div class="list-item none">
-            <a href=''>考勤信息</a>
-            <a href="#gongzibiaotijiao">提交工资表</a>
+            <a href=''>查看已审批考勤信息</a>
+            <a href="showAllTijiaoGongziAction">提交工资表</a>
             <a href=''>发放工资</a>
+          </div>
+        </li>
+	<li>
+          <h4 class="M4"><span></span>账目处理</h4>
+          <div class="list-item none">
+            <a href="">查看已审批工资表</a>
+            <a href="">提交账目表</a>
+            <a href="">查看已审批账目表</a>
           </div>
         </li>
 	<!-- <li>
@@ -110,42 +129,89 @@
 							<li><img src="images/home.png"></li>
 								<li style="margin-left:25px;">您当前的位置：</li>
 								<li><a href="#">打卡</a></li>
-								<li>></li>
+								<li></li>
 								<li><a href="#">打卡</a></li>
 						</ul>
 			</div>
 			
 <div class="main"  style="overflow:hidden; width: 100%; height: 100%">
 	<div id="right0" ></div>
-
+	<!--以下为打卡按钮 -->
+	<div id="daka" >
+	
+           <%
+				Date currentTime = new Date(); 
+				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+				String dateString = formatter.format(currentTime);
+			%>
+           <p align="center"> 
+	           <form action="dakaaction" method="post">
+	           <input type="hidden" name="kaoqinId"/>
+	           <input type="text" name="daKaTime" value="<%=(new java.util.Date()).toLocaleString().substring(10)%>"/>
+	           <%-- <input type="hidden" name="daKaDate" value="<%=dateString%>"/> --%>
+	           <input type="hidden" name="usersId" value="4" />
+	           <input type="submit"  value="签到"/>
+	           </form>
+           </p>   
+    </div>
+    <!-- 查看所有考勤 -->
+   
+<div id="showdaka">
+	<table border="1" >
+			<tr>
+				<td>编号</td>
+				<td>签到时间</td>
+				<td>用户Id</td>
+			</tr>
+			<c:forEach items="${sessionScope.daKaList }" var="kaoqin" varStatus="vs" >
+				<tr>
+					<td>${kaoqin.kaoqinId }</td>
+					<td>${kaoqin.dakaTime }</td>
+					<td>${kaoqin.userId }</td>
+					
+				</tr>
+			</c:forEach>	
+			</table>	
+    
+</div>
+    <div id="dakachenggong">
+    	<h1>打卡成功界面</h1>
+    	<hr>
+    </div>
 	<div id="gongzibiaotijiao" >
-						<form action="insertOneGongzi" method="post" >
-						<table border="1" >
-							<tr>
-								<td>编号</td>
-								<td>员工编号</td>
-								<td>缺勤</td>
-								<td>加班时长</td>
-								<td>工资级别</td>
-								<td>应发工资</td>
-								<td>审批状态</td>
-							</tr>
-						<c:forEach items="${sessionScope.gongzibiaos }" var="gongzi" varStatus="vs" >
-							<tr>
-								<td>${vs.index+1 }</td>
-								<td><input type="text" value=${gongzi.userId } /> </td>
-								<td><input type="text" value=${gongzi.chuqinQue } /> </td>
-								<td><input type="text" value=${gongzi.jiaban }/></td>
-								<td><input type="text" value=${gongzi.gongziJiBie }/></td>
-								<td><input type="text" value=${gongzi.gongziYing }/></td>
-								<td><input type="text" value=${gongzi.zhuangtai }/></td>
-								
-							</tr>
-							</c:forEach>
-							
-						</table>
-						<input type="submit" name="tijiao"   value="提交" />
-						</form>
+			
+			<form action="insertOneTijiaoGongzi" method="post" >
+				<a href="gongziInit">初始化数据</a>
+			<table border="1" >
+				<tr>
+					<td>编号</td>
+					<td>员工编号</td>
+					<td>缺勤</td>
+					<td>加班时长</td>
+					<td>工资级别</td>
+					<td>应发工资</td>
+					<td>审批状态</td>
+					<td>编辑</td>
+				</tr>
+			<c:forEach items="${sessionScope.gongzibiaos }" var="gongzi" varStatus="vs" >
+				<tr>
+					<td ><b id="gongziId">${gongzi.gongziId }</b></td>
+					<td ><input type="text" id="userId" value=${gongzi.userId } /> </td>
+					<td ><input type="text" id="chuqinQue" value=${gongzi.chuqinQue } /> </td>
+					<td ><input type="text" id="jiaban" value=${gongzi.jiaban }/></td>
+					<td ><input type="text" id="gongziJiBie" value=${gongzi.gongziJiBie }/></td>
+					<td ><input type="text" id="gongziYing" value=${gongzi.gongziYing }/></td>
+					<td ><b id="gongziId">${gongzi.zhuangtai }</b></td>
+					<td>
+						<a href="deleteOneTijiaoGongziAction?gongziId=${gongzi.gongziId }">删除</a>   
+						<a href="updateOneTijiaoGongziAction">修改</a>
+					</td>
+				</tr>
+				</c:forEach>
+				
+			</table>
+			<input type="submit" name="tijiao"   value="提交" />
+			</form>
 
 </div>
 	<div id="right1" >
@@ -192,7 +258,7 @@
 								
 							</tr>
 						</c:forEach>	
-						</table>
+						</table>	
 						
 			</div>
 			

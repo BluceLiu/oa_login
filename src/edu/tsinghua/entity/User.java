@@ -8,6 +8,9 @@ public class User {
 	private int  gongzijibie;
 	
 	
+	public User() {
+		super();
+	}
 	public int getGongzijibie() {
 		return gongzijibie;
 	}

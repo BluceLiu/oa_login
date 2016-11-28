@@ -14,6 +14,25 @@
    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
    default-autowire="byName" >
 	
+	<!-- 定义dao/biz/action -->
+	<bean name="userDao" class="edu.tsinghua.dao.UserDao"/>
+	<bean name="userBiz" class="edu.tsinghua.biz.UserBiz"/> 
+	<bean name="loginAct" class="edu.tsinghua.action.LoginAction"/>
+	
+	<bean name="huibaoKuaiDao" class="edu.tsinghua.dao.HuibaoKuaiDao"/>
+	<bean name="huibaoKuaiBiz" class="edu.tsinghua.biz.HuibaoKuaiBiz"/>
+	<bean name="huibaoKuaiAct" class="edu.tsinghua.action.HuibaoKuaiAction"/>
+	
+	<bean name="gongziDao" class="edu.tsinghua.dao.GongziDao"/>
+	<bean name="gongziBiz" class="edu.tsinghua.biz.GongziBiz"/>
+	<bean name="gongziAct" class="edu.tsinghua.action.GongziAction"/>
+	
+	<bean name="kaoqinDao" class="edu.tsinghua.dao.KaoqinDao"/>
+	<bean name="kaoqinBiz" class="edu.tsinghua.biz.KaoqinBiz"/>
+	<bean name="dakaAct" class="edu.tsinghua.action.KaoqinAction"/>
+	
+	
+	
 	<!--定义数据源  -->
 	<bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
@@ -37,17 +56,13 @@
 	<property name="mappingResources">
 			<list>
 				<value>edu/tsinghua/entity/mapping/user.xml</value>
+				<value>edu/tsinghua/entity/mapping/LoginInfo.xml</value>
 				<value>edu/tsinghua/entity/mapping/HuibaoKuai.xml</value>
+				<value>edu/tsinghua/entity/mapping/Gongzi.xml</value>
+				<value>edu/tsinghua/entity/mapping/kaoqin.xml</value>
 			</list>
 		</property>
 	</bean>
-	<bean name="userDao" class="edu.tsinghua.dao.UserDao"/>
-	<bean name="userBiz" class="edu.tsinghua.biz.UserBiz"/> 
-	<bean name="loginAct" class="edu.tsinghua.action.LoginAction"/>
-	
-	<bean name="huibaoKuaiDao" class="edu.tsinghua.dao.HuibaoKuaiDao"/>
-	<bean name="huibaoKuaiBiz" class="edu.tsinghua.biz.HuibaoKuaiBiz"/>
-	<bean name="huibaoKuaiAct" class="edu.tsinghua.action.HuibaoKuaiAction"/>
 	
 	
 	

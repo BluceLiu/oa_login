@@ -2,6 +2,7 @@ package edu.tsinghua.biz;
 
 import edu.tsinghua.dao.UserDao;
 import edu.tsinghua.entity.LoginInfo;
+import edu.tsinghua.entity.User;
 
 public class UserBiz {
 
@@ -22,4 +23,10 @@ public class UserBiz {
 		return userDao.login(user);
 	}
 	
+	/**
+	 * 查询用户类型
+	 * */
+	public User getuserTypeId(LoginInfo loginInfo){
+		return userDao.getuserTypeId(loginInfo);
+	}
 }

@@ -3,12 +3,16 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="edu.tsinghua.entity.LoginInfo" table="LoginInfo">
-		<id name="loginInfoId" type="int" column="loginInfoId">
+	
+	
+	<class name="edu.tsinghua.entity.User" table="User">
+		<id name="userId" type="int" column="userId">
 			<generator class="increment"></generator>
 		</id>
-		<property name="userId" type="int" ></property>
-		<property name="loginInfoPwd" type="java.lang.String"></property>
+		<property name="userName" type="java.lang.String" ></property>
+		<property name="userTypeId" type="int"></property>
+		<property name="bumenId" type="int"></property>
+		<property name="gongzijibie" type="int"></property>
 		
 	
 	</class>
