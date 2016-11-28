@@ -48,10 +48,39 @@ public class GongziAction extends ActionSupport implements SessionAware,ModelDri
 	 * 提交工资表 insert
 	 */
 	public String insertOne(){
-		List<Gongzi> gongzis=
-		gongziBiz.insertOne(gongzis);
+//		List<Gongzi> gongzis=
+//		gongziBiz.insertOne(gongzis);
 		return SUCCESS;
 	}
+	
+	/**
+	 * 删除工资表 
+	 */
+	public String deleteOne(){
+		gongziBiz.deleteOne(gongzi);
+		return SUCCESS;
+	}
+	/**
+	 * 修改工资表 
+	 */
+	public String updateOne(){
+		gongziBiz.updateOne(gongzi);
+		return SUCCESS;
+	}
+	/**
+	 * 查看所有工资表 
+	 */
+	public String showAll(){
+		List<Gongzi> gongzis= gongziBiz.showAll();
+		session.put("gongzibiaos", gongzis);
+		return SUCCESS;
+	}
+	
+	
+	
+	
+	
+	
 	
 	@Override
 	public Gongzi getModel() {

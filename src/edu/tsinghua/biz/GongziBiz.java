@@ -31,4 +31,25 @@ public class GongziBiz {
 		gongziDao.insertOne(gongzis);
 	}
 	
+	/**
+	 * 删除工资表 
+	 */
+	public void deleteOne(Gongzi gongzi){
+		gongziDao.deleteOne(gongzi);
+		
+	}
+	/**
+	 * 修改工资表 
+	 */
+	public void updateOne(Gongzi gongzi){
+		gongziDao.updateOne(gongzi);
+	}
+	/**
+	 * 查看所有工资表 
+	 */
+	public List<Gongzi> showAll(){
+		return gongziDao.showAll();
+	}
+	
+	
 }

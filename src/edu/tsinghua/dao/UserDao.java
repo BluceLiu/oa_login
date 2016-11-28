@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import edu.tsinghua.entity.LoginInfo;
+import edu.tsinghua.entity.User;
 
 public class UserDao extends BaseDao{
 	/**
@@ -30,10 +31,30 @@ public class UserDao extends BaseDao{
 		
 	}
 	
+	/**
+	 * 查询用户类型
+	 * */
+	public User getuserTypeId(LoginInfo loginInfo){
+		Session session=getSession();
+		if(loginInfo !=null){
+			String hql="from User u where u.userId=:userId";
+//		String sql="select * from LoginInfo l,User u where l.userId=u.userId and userId=:userId";
+		Query query= session.createQuery(hql);
+		query.setInteger("userId", loginInfo.getUserId());
+		List<User> users=query.list();
+		if(users!=null){
+		return users.get(0);
+		}else{ 
+			return null;
+		}
+		}else{
+			return null;
+		}
+	}
+}
 	
-	
-	
+
 	
 	
 
-}
+
